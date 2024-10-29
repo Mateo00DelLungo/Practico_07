@@ -13,7 +13,16 @@ footer {
   color: white;
 }
 
-/* propiedades del spinner */
+#spinner {
+  display: none;
+  transition: opacity 0.75s, visibility 0.75s;
+}
+
+#spinner.show {
+  display: block;
+}
+
+/* propiedades del spinner de carga de pagina */
 .loader {
   position: fixed;
   top: 0;
