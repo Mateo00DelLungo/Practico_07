@@ -2,6 +2,34 @@ const $caption = document.getElementById("descipcion_tabla");
 const $tbody = document.getElementById("turnos_table");
 // loader tabla
 const $loaderdiv = document.getElementById("spinner");
+const $inputNombre = document.getElementById("nombre_cliente");
+const $inputFecha = document.getElementById("fecha_turno");
+
+//////////////////// FORM VALIDATIONS
+(() => {
+  "use strict";
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll(".needs-validation");
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach((form) => {
+    form.addEventListener(
+      "submit",
+      (event) => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add("was-validated");
+      },
+      false
+    );
+  });
+})();
+
+///////////////////////////
 
 window.addEventListener("load", () => {
   // loader pagina
@@ -47,4 +75,21 @@ function process() {
         $tbody.appendChild($tr);
       });
     });
+}
+
+function newTurno() {
+  let nombreCliente = $inputNombre.value;
+  let fechaTurno = $inputFecha.value;
+
+  // if (nombreCliente === "" || fechaTurno === "") {
+  //   alert("Datos incorrectos, por favor rellene todos los campos");
+  //   return;
+  // }
+}
+
+function isLetter(evt) {
+  var charCode = evt.which ? evt.which : evt.keyCode;
+  if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+    return true;
+  return false;
 }
